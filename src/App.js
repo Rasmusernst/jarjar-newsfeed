@@ -1,36 +1,32 @@
-import React, { Component, } from 'react'
-import './App.css'
-import data, {
-  // comment,
-  // update,
-} from './data'
-import JarJarNewsfeed from './components/newsfeed'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { Provider } from 'react-redux'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import lightBlue from '@material-ui/core/colors/lightBlue'
+import amber from '@material-ui/core/colors/amber'
 
-class App extends Component {
-  state = {
-    updates: data.updates,
-  }
+import NewsFeed from './containers/NewsFeed'
 
-  handleAddUpdate = (text) => {
-    console.log('Add an update to updates, with text: ', text);
-  }
+const theme = createMuiTheme({
+	palette: {
+		primary: lightBlue,
+		secondary: amber,
+	},
+})
 
-  render () {
-    const {
-      updates,
-    } = this.state
+export default class App extends PureComponent {
+	static propTypes = {
+		store: PropTypes.object.isRequired,
+	}
 
-    return (
-      <div className='container'>
-        {/* Display the newsfeed */}
-        <JarJarNewsfeed
-          title="Jar Jar"
-          updates={updates}
-          onAddUpdate={this.handleAddUpdate}
-        />
-      </div>
-    )
-  }
+	render() {
+		const { store } = this.props
+		return (
+			<Provider store={store}>
+				<MuiThemeProvider theme={theme}>
+					<NewsFeed />
+				</MuiThemeProvider>
+			</Provider>
+		)
+	}
 }
-
-export default App

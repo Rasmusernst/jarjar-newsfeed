@@ -6,26 +6,26 @@ import PropTypes from 'prop-types'
 
 export default class JarJarNewsfeed extends React.PureComponent {
   static propTypes = {
-    onAddUpdate: PropTypes.func.isRequired,
-    updates: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    })).isRequired,
-    title: PropTypes.string.isRequired,
+  	onAddUpdate: PropTypes.func.isRequired,
+  	updates: PropTypes.arrayOf(PropTypes.shape({
+  		id: PropTypes.string.isRequired,
+  	})).isRequired,
+  	title: PropTypes.string.isRequired,
   }
 
-  render () {
-    const {
-    // onAddUpdate,
-    // updates,
-      title,
-    } = this.props
+  render() {
+  	const {
+  		// onAddUpdate,
+  		// updates,
+  		title,
+  	} = this.props
 
-    return (<div>
-      <h1>{title} - Newsfeed</h1>
-      {/*
+  	return (<div>
+	<h1>{title} - Newsfeed</h1>
+	{/*
       * render a list of updates here
       * {updates.map(update => <ViewUpdate {...update} />)}
       */}
-    </div>)
+  	</div>)
   }
 }

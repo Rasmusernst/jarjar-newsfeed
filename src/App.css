@@ -150,3 +150,7 @@ body {
 .btn.add-update-button {
   margin-top: 10px;
 }
+
+.root {
+  margin: 50px 8px;
+}
